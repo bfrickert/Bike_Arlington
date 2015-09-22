@@ -1,5 +1,6 @@
 library(shiny)
-if("leaflet" %in% rownames(installed.packages()) == FALSE) {install.packages("leaflet")}
+if("devtools" %in% rownames(installed.packages()) == FALSE) {install.packages('devtools')}
+if("leaflet" %in% rownames(installed.packages()) == FALSE) {devtools::install_github("rstudio/leaflet")}
 library(leaflet)
 
 # Define UI for application that draws a histogram

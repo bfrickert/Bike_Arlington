@@ -1,11 +1,7 @@
 library(shiny)
-if("XML" %in% rownames(installed.packages()) == FALSE) {install.packages("XML")}
 library(XML)
-if("plyr" %in% rownames(installed.packages()) == FALSE) {install.packages("plyr")}
 library(plyr)
-if("dplyr" %in% rownames(installed.packages()) == FALSE) {install.packages("dplyr")}
 library(dplyr)
-if("forecast" %in% rownames(installed.packages()) == FALSE) {install.packages("forecast")}
 library(forecast)
 
 shinyServer(function(input, output) {
