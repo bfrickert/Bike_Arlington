@@ -32,7 +32,7 @@ return(test)
   })
   output$forecastPlot <- renderPlot({
     fcast <- forecast(getFit(), method="arima")
-    plot(fcast, ylab="New orders index")
+    plot(fcast, ylab="Bicyclist Count")
     lines(getTest(), col='red')
   })
  output$accuracy <- renderTable({
