@@ -1,4 +1,5 @@
 library(shiny)
+if("leaflet" %in% rownames(installed.packages()) == FALSE) {install.packages("leaflet")}
 library(leaflet)
 
 # Define UI for application that draws a histogram
