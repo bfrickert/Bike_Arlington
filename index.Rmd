@@ -1,6 +1,6 @@
 ---
 title       : Bicycle Forecasting in Arlington, Virginia
-subtitle    : See what horrors the future holds...
+subtitle    : Look into the future of bike trails
 author      : Brian Frickert
 job         : Senior Data Over-Engineer
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -20,15 +20,7 @@ Are bicyclists making full use of Arlington's bike trails?
 
 ## Slide 2
 
-```{r,cache=F}
-
-library(leaflet)
-m <- leaflet()
-   m <- addTiles(m)
-   m <- addMarkers(m, lng='38.857702', lat='38.857702', popup='CC Connector')
-   m
-
-```
+![screen shot](screenshot.png)
 
 ---
 
