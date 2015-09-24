@@ -1,13 +1,11 @@
 library(shiny)
-if("devtools" %in% rownames(installed.packages()) == FALSE) {install.packages('devtools')}
-if("leaflet" %in% rownames(installed.packages()) == FALSE) {devtools::install_github("rstudio/leaflet")}
 library(leaflet)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("You know you want to Forecast Bicycle Usage in Arlington, VA!"),
+  titlePanel("You know you want to Forecast Bike Trail Usage in Arlington, VA!"),
   
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
@@ -45,16 +43,19 @@ shinyUI(fluidPage(
                      ))
     ),
     mainPanel(
-      tags$h3("Synopsis"),
-      tags$h5("The graphs and table below attempt to forecast future bike trail usage in 
-              Arlington County, VA 
-              by leveraging a STL (Seasonal and Trend decomposition using Loess) model 
-              trained on data collected from sensors installed along Arlington's bike trails. 
-              This training set is comprised of sensor readings 
-              from late 2012 to the end of 2014. 
-              The model is then evaluated against data for
-              bike trail usage so far in 2015. That forecast is then plotted
-              along with a decomposition of the training time series. At the very bottom, 
+      tags$h3("Executive Summary"),
+      tags$h5("The graphs and table below perform a simple forecast of future bike 
+trail usage in 
+              Arlington County, VA. Upon selecting a bike trail to the left, 
+              you'll see 
+              an STL (Seasonal and Trend decomposition using Loess) 
+              model forecast the future."),
+      tags$br(),
+      tags$h5("The way it works is that for each trail, sensor readings 
+              from late 2012 to the end of 2014 are fed into the model. 
+              The model then evaluates itself against data for
+              bike trail usage so far in 2015. The forecast is then plotted
+              along with a decomposition of the time series. At the very bottom, 
               the accuracy of each trail's forecast is reported."),
       tags$br(),
       tags$h5("So go ahead and pick your favorite trail!"),
@@ -64,15 +65,19 @@ shinyUI(fluidPage(
              "Data for Developers"),
       tags$br(),
       tags$hr(),
-      tags$h3("Location of Sensor"),
+      tags$h3("Location of selected sensor"),
       leafletOutput("mymap"),
       tags$br(),
-      tags$h3("Forecast with Cross-Validation"),
+      tags$hr(),
+      tags$h3("Forecast"),
       tags$h5(""),
       plotOutput("forecastPlot"),
-      tags$h3("Trends"),
+      tags$hr(),
+      tags$h3("Decomposition of Training Time Series"),
+      tags$h5(""),
       plotOutput("otherPlot"),
-      tags$h3("Accuracy"),
+      tags$hr(),
+      tags$h3("Accuracy forecasting 2015 bike trail usage"),
       tableOutput("accuracy")
     )
   )

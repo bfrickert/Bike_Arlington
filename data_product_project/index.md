@@ -1,6 +1,6 @@
 ---
 title       : Bicycle Forecasting in Arlington, Virginia
-subtitle    : See what horrors the future holds...
+subtitle    : Look into the future of bike trails ...
 author      : Brian Frickert
 job         : Senior Data Over-Engineer
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -11,24 +11,31 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
+
 ## Slide 1
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+Are bicyclists making full use of Arlington's bike trails?
 
 --- .class #id 
 
 ## Slide 2
 
-> 1. By
-> 2. Ripped
-> 3. Mouth
+![screen shot](screenshot.png)
 
 ---
 
 ## Slide 3
 
+
+    
+
+```r
+    fcast <- forecast(fit, method="ets")
+    plot(fcast, ylab="Bicyclist Count")
+    lines(test, col='red')
+```
+
+![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png) 
 
 ---
 

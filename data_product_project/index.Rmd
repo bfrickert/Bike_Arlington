@@ -1,6 +1,6 @@
 ---
 title       : Bicycle Forecasting in Arlington, Virginia
-subtitle    : See what horrors the future holds...
+subtitle    : Look into the future of bike trails
 author      : Brian Frickert
 job         : Senior Data Over-Engineer
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -11,24 +11,41 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
+
 ## Slide 1
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+Are bicyclists making full use of Arlington's bike trails?
 
 --- .class #id 
 
 ## Slide 2
 
-> 1. By
-> 2. Ripped
-> 3. Mouth
+![screen shot](screenshot.png)
 
 ---
 
 ## Slide 3
 
+```{r,echo=F}
+library(shiny)
+library(XML)
+suppressMessages(library(forecast))
+url <- 'http://webservices.commuterpage.com/counters.cfc?wsdl&method=GetCountInDateRange&counterid=4&startDate=01/01/2005&endDate=10/31/2015&direction=&mode=B&interval=d'
+    doc <- xmlTreeParse(url, useInternal=T)
+    top <- xmlRoot(doc)
+    df <- data.frame(matrix(unlist(xmlApply(top, xmlAttrs)), ncol=4, byrow=T),stringsAsFactors = F)
+    names(df) <- c('count','date','direction', 'type')
+    t <- ts(as.integer(df$count), start=c(2012, 11), end=c(2015, 9), frequency=12)
+    train <- window(t,end=c(2015,1))
+    test <- window(t,start=c(2015,1))
+    fit <- stl(train, t.window=12, s.window="periodic", robust=TRUE)
+    ```
+    
+```{r, fig.width=10,fig.height=5}
+    fcast <- forecast(fit, method="ets")
+    plot(fcast, ylab="Bicyclist Count")
+    lines(test, col='red')
+```    
 
 ---
 

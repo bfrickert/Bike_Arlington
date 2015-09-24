@@ -33,7 +33,7 @@
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
     <h1>Bicycle Forecasting in Arlington, Virginia</h1>
-    <h2>See what horrors the future holds...</h2>
+    <h2>Look into the future of bike trails ...</h2>
     <p>Brian Frickert<br/>Senior Data Over-Engineer</p>
   </hgroup>
   <article></article>  
@@ -46,11 +46,7 @@
     <h2>Slide 1</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
-</ol>
+    <p>Are bicyclists making full use of Arlington&#39;s bike trails?</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -61,11 +57,7 @@
     <h2>Slide 2</h2>
   </hgroup>
   <article data-timings="">
-    <ol class = "build incremental">
-<li>By</li>
-<li>Ripped</li>
-<li>Mouth</li>
-</ol>
+    <p><img src="screenshot.png" alt="screen shot"></p>
 
   </article>
   <!-- Presenter Notes -->
@@ -76,7 +68,13 @@
     <h2>Slide 3</h2>
   </hgroup>
   <article data-timings="">
-    
+    <pre><code class="r">    fcast &lt;- forecast(fit, method=&quot;ets&quot;)
+    plot(fcast, ylab=&quot;Bicyclist Count&quot;)
+    lines(test, col=&#39;red&#39;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>

@@ -30,12 +30,12 @@ return(test)
       plot(getFit())
   })
   output$forecastPlot <- renderPlot({
-    fcast <- forecast(getFit(), method="arima")
+    fcast <- forecast(getFit(), method="ets")
     plot(fcast, ylab="Bicyclist Count")
     lines(getTest(), col='red')
   })
  output$accuracy <- renderTable({
-   fcast <- forecast(getFit(), method="arima")
+   fcast <- forecast(getFit(), method="ets")
    forecast::accuracy(fcast, getTest())
    })
  output$mymap <- renderLeaflet({
