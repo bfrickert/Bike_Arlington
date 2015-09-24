@@ -46,11 +46,7 @@
     <h2>Slide 1</h2>
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
-</ol>
+    <p>Are bicyclists making full use of Arlington&#39;s bike trails?</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -61,11 +57,15 @@
     <h2>Slide 2</h2>
   </hgroup>
   <article data-timings="">
-    <ol class = "build incremental">
-<li>By</li>
-<li>Ripped</li>
-<li>Mouth</li>
-</ol>
+    <pre><code class="r">library(leaflet)
+m &lt;- leaflet()
+   m &lt;- addTiles(m)
+   m &lt;- addMarkers(m, lng=&#39;38.857702&#39;, lat=&#39;38.857702&#39;, popup=&#39;CC Connector&#39;)
+   m
+</code></pre>
+
+<p>&lt;!--html_preserve--&gt;<div id="htmlwidget-1152" style="width:504px;height:504px;" class="leaflet"></div>
+<script type="application/json" data-for="htmlwidget-1152">{&quot;x&quot;:{&quot;calls&quot;:[{&quot;method&quot;:&quot;addTiles&quot;,&quot;args&quot;:[&quot;http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,null,null,{&quot;minZoom&quot;:0,&quot;maxZoom&quot;:18,&quot;maxNativeZoom&quot;:null,&quot;tileSize&quot;:256,&quot;subdomains&quot;:&quot;abc&quot;,&quot;errorTileUrl&quot;:&quot;&quot;,&quot;tms&quot;:false,&quot;continuousWorld&quot;:false,&quot;noWrap&quot;:false,&quot;zoomOffset&quot;:0,&quot;zoomReverse&quot;:false,&quot;opacity&quot;:1,&quot;zIndex&quot;:null,&quot;unloadInvisibleTiles&quot;:null,&quot;updateWhenIdle&quot;:null,&quot;detectRetina&quot;:false,&quot;reuseTiles&quot;:false,&quot;attribution&quot;:&quot;&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>&quot;}]},{&quot;method&quot;:&quot;addMarkers&quot;,&quot;args&quot;:[&quot;38.857702&quot;,&quot;38.857702&quot;,null,null,null,{&quot;clickable&quot;:true,&quot;draggable&quot;:false,&quot;keyboard&quot;:true,&quot;title&quot;:&quot;&quot;,&quot;alt&quot;:&quot;&quot;,&quot;zIndexOffset&quot;:0,&quot;opacity&quot;:1,&quot;riseOnHover&quot;:false,&quot;riseOffset&quot;:250},&quot;CC Connector&quot;,null,null,null,null]}],&quot;limits&quot;:{&quot;lat&quot;:[1,1],&quot;lng&quot;:[1,1]}},&quot;evals&quot;:[]}</script>&lt;!--/html_preserve--&gt;</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -76,7 +76,13 @@
     <h2>Slide 3</h2>
   </hgroup>
   <article data-timings="">
-    
+    <pre><code class="r">    fcast &lt;- forecast(fit, method=&quot;ets&quot;)
+    plot(fcast, ylab=&quot;Bicyclist Count&quot;)
+    lines(test, col=&#39;red&#39;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-3-1.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
