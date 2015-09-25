@@ -1,6 +1,6 @@
 ---
 title       : Bicycle Forecasting in Arlington, Virginia
-subtitle    : Look into the future of bike trails
+subtitle    : Peering into the future of local bike trails
 author      : Brian Frickert
 job         : Senior Data Over-Engineer
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -9,22 +9,43 @@ hitheme     : tomorrow      #
 widgets     : []            # {mathjax, quiz, bootstrap}
 mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
----
+
+---{
+ tpl: thankyou
+}
 
 
-## Slide 1
+## What Urban Planning questions can measuring Bike Trail Usage answer?
 
-Are bicyclists making full use of Arlington's bike trails?
+  * Are bike trails currently being utilized?
+  * Will they be utilized more or less in the future?
+  * Do we even need cars in Arlington County?
+  
+  > * (yes, depends, and absolutely)
 
---- .class #id 
+---{
+ tpl: thankyou
+}
 
-## Slide 2
+## My Revolutionary Trail Usage Forecaster!
 
-![screen shot](screenshot.png)
+```{r fig.width=4, fig.height=3,echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG('screenshot.png')
+ grid.raster(img)
+```
 
----
+My **fabtabulous** Bike Trail Forecaster not only shows you **WHERE** 
+a county bike sensor is, it also shows each month's count of bicyclists
+on that trail! What's more: it looks deep into the FUTURE, forecasting
+how many bicyclists will use the trail in the months to come!!
 
-## Slide 3
+---{
+ tpl: thankyou
+}
+
+## BEHOLD THE FUTURE of the Custis Rosslyn Bike Trail!
 
 ```{r,echo=F}
 library(shiny)
@@ -41,13 +62,35 @@ url <- 'http://webservices.commuterpage.com/counters.cfc?wsdl&method=GetCountInD
     fit <- stl(train, t.window=12, s.window="periodic", robust=TRUE)
     ```
     
-```{r, fig.width=10,fig.height=5}
+```{r, fig.width=10,fig.height=5, echo=F}
     fcast <- forecast(fit, method="ets")
     plot(fcast, ylab="Bicyclist Count")
     lines(test, col='red')
 ```    
 
----
+---{
+ tpl: thankyou
+}
 
-## Slide 4
+## Is the Forecaster always accurate?
+
+Not exactly.
+
+This is the average of percentage errors when evaluating the forecast with the 2015 sensor readings 
+or Mean Absolute Percentage Errors (MAPE). For this trail, my forecast is off, on average, by almost 100%.
+
+```{r,echo=F}
+    fcast <- forecast(fit, method="ets")
+   f <- forecast::accuracy(fcast, test)
+#   f
+   f[2,5]
+```
+
+My suspicion is that the forecast will improve as more data is collected.
+
+--- {
+ tpl: thankyou
+}
+
+## Thank You
 

@@ -54,7 +54,7 @@ trail usage in
       tags$h5("The way it works is that for each trail, sensor readings 
               from late 2012 to the end of 2014 are fed into the model. 
               The model then evaluates itself against data for
-              bike trail usage so far in 2015. The forecast is then plotted
+              bike trail usage so far in 2015. The forecast is then plotted,
               along with a decomposition of the time series. At the very bottom, 
               the accuracy of each trail's forecast is reported."),
       tags$br(),
@@ -70,14 +70,25 @@ trail usage in
       tags$br(),
       tags$hr(),
       tags$h3("Forecast"),
-      tags$h5(""),
+      tags$h5("This plot helps compare the model's forecast against a 
+              test set of bicycle sensor readings
+              from 2015. You can see whether the actual count of bicyclists for a given month in
+              2015 falls within the forecast's confidence interval."),
       plotOutput("forecastPlot"),
       tags$hr(),
       tags$h3("Decomposition of Training Time Series"),
-      tags$h5(""),
+      tags$h5("The following four graphs feature the training data observations, the seasonal 
+component of the data, 
+              the trend component, and the 
+              periodic seasonal pattern extracted out from the 
+              original data. There is a bar 
+              at the right hand side of each graph to allow a 
+              relative comparison of the magnitudes of each 
+              component."),
       plotOutput("otherPlot"),
       tags$hr(),
       tags$h3("Accuracy forecasting 2015 bike trail usage"),
+      tags$h5("Here you'll find a range of summary measures for our forecast accuracy."),
       tableOutput("accuracy")
     )
   )
