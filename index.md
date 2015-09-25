@@ -44,13 +44,6 @@ how many bicyclists will use the trail in the months to come!!
 
 
     
-
-```r
-    fcast <- forecast(fit, method="ets")
-    plot(fcast, ylab="Bicyclist Count")
-    lines(test, col='red')
-```
-
 ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png) 
 
 ---{

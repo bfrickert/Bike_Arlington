@@ -62,7 +62,7 @@ url <- 'http://webservices.commuterpage.com/counters.cfc?wsdl&method=GetCountInD
     fit <- stl(train, t.window=12, s.window="periodic", robust=TRUE)
     ```
     
-```{r, fig.width=10,fig.height=5}
+```{r, fig.width=10,fig.height=5, echo=F}
     fcast <- forecast(fit, method="ets")
     plot(fcast, ylab="Bicyclist Count")
     lines(test, col='red')
