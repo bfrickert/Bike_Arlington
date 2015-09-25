@@ -80,15 +80,14 @@ trail usage in
       tags$h5("The following four graphs feature the training data observations, the seasonal 
 component of the data, 
               the trend component, and the 
-              periodic seasonal pattern extracted out from the 
-              original data. There is a bar 
+              error. There is a bar 
               at the right hand side of each graph to allow a 
               relative comparison of the magnitudes of each 
               component."),
       plotOutput("otherPlot"),
       tags$hr(),
       tags$h3("Accuracy forecasting 2015 bike trail usage"),
-      tags$h5("Here you'll find a range of summary measures for our forecast accuracy."),
+      tags$h5("Here you'll find a range of summary measures for the forecast's accuracy."),
       tableOutput("accuracy")
     )
   )
