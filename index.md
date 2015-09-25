@@ -29,7 +29,7 @@ knit        : slidify::knit2slides
 
 ## My Revolutionary Trail Usage Forecaster!
 
-![screen shot](screenshot.png)
+![plot of chunk unnamed-chunk-1](assets/fig/unnamed-chunk-1-1.png) 
 
 My **fabtabulous** Bike Trail Forecaster not only shows you **WHERE** 
 a county bike sensor is, it also shows each month's count of bicyclists
@@ -51,7 +51,7 @@ how many bicyclists will use the trail in the months to come!!
     lines(test, col='red')
 ```
 
-![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png) 
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png) 
 
 ---{
  tpl: thankyou

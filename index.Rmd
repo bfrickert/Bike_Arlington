@@ -29,7 +29,12 @@ knit        : slidify::knit2slides
 
 ## My Revolutionary Trail Usage Forecaster!
 
-![screen shot](screenshot.png)
+```{r fig.width=1, fig.height=1,echo=FALSE}
+library(png)
+library(grid)
+img <- readPNG('screenshot.png')
+ grid.raster(img)
+```
 
 My **fabtabulous** Bike Trail Forecaster not only shows you **WHERE** 
 a county bike sensor is, it also shows each month's count of bicyclists
