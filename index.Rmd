@@ -29,7 +29,7 @@ knit        : slidify::knit2slides
 
 ## My Revolutionary Trail Usage Forecaster!
 
-```{r fig.width=1, fig.height=1,echo=FALSE}
+```{r fig.width=4, fig.height=3,echo=FALSE}
 library(png)
 library(grid)
 img <- readPNG('screenshot.png')
