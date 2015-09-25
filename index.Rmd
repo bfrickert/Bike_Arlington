@@ -89,10 +89,8 @@ or Mean Absolute Percentage Errors (MAPE). For this trail, my forecast is off, o
 My suspicion is that the forecast will improve as more data is collected.
 
 --- {
- tpl: thankyou,
- social: [{title: gplus, href: "http://plus.google.com"}, {title: twitter, href: "http://twitter.com"}]
+ tpl: thankyou
 }
 
 ## Thank You
 
-For more information you can contact.
