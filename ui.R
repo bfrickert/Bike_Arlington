@@ -1,5 +1,6 @@
 library(shiny)
 library(leaflet)
+library(plotly)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -43,20 +44,21 @@ shinyUI(fluidPage(
                      ))
     ),
     mainPanel(
-      tags$h3("Executive Summary"),
-      tags$h5("The graphs and table below perform a simple forecast of future bike 
-trail usage in 
-              Arlington County, VA. Upon selecting a bike trail to the left, 
-              you'll see 
-              an STL (Seasonal and Trend decomposition using Loess) 
-              model forecast the future."),
+      tags$h3("Arlington Bike Trail and Bike Lane Data Visualizations and Forecast"),
+      tags$h5("To the left are the names of bike trails in Arlington County, Va. Each has
+              a sensor that tallies the number of bicycles using the trail on any given day. Below you will
+              find time series representations of the daily traffic on each selected trail along
+              with each trail's median daily traffic broken down by month."),
       tags$br(),
-      tags$h5("The way it works is that for each trail, sensor readings 
-              from late 2012 to the end of 2014 are fed into the model. 
-              The model then evaluates itself against data for
-              bike trail usage so far in 2015. The forecast is then plotted,
-              along with a decomposition of the time series. At the very bottom, 
-              the accuracy of each trail's forecast is reported."),
+      HTML("<h5>Beneath those graphs is a seasonally adjusted representation of the same
+              data. <i>Seasonally adjusted</i> means that any data that can be attributed
+           to seasonal trends has been removed, leaving only that number of bicycles that
+           cannot be attributed to seasonal traffic (so far as the model can identify). This
+           probably makes the most sense when looking at the <strong>Bluemont Connector</strong> trail.
+           The model tells us that there is no bicycle traffic on this trail that cannot be
+          explained by the seasonal and overall trends from the sensor data. And if you're interested in
+           just what the seasonal and overall trends look like, refer to the <i>Forecast Decomposition
+           Visualizations</i>.</h5>"),
       tags$br(),
       tags$h5("So go ahead and pick your favorite trail!"),
       tags$br(),
@@ -69,24 +71,34 @@ trail usage in
       leafletOutput("mymap"),
       tags$br(),
       tags$hr(),
-      tags$h3("Forecast"),
-      tags$h5("This plot helps compare the model's forecast against a 
-              test set of bicycle sensor readings
-              from 2015. You can see whether the actual count of bicyclists for a given month in
-              2015 falls within the forecast's confidence interval."),
+      plotlyOutput('actual.data'),
+      tags$br(),
+      uiOutput('median.mean'),
+      tags$br(),
+      #plotlyOutput('distribution'),
+      tags$br(),
+      plotlyOutput('busiest'),
+      tags$h3("Seasonally Adjusted Data"),
+      tags$h5("If the count of bikes that can be attributed to the seasonal and overall
+trends is removed, you wind up with the line graph below. It displays the monthly bike counts
+that the model can't explain from trends and tries to forecast what future seasonally adjusted
+bike trail usage. This forescast (in blue with gray confidence intervals) can then be 
+compared to actual seasonally adjusted data (in red) to see how well the model does at 
+forecasting. 
+              "),
       plotOutput("forecastPlot"),
       tags$hr(),
       tags$h3("Decomposition of Training Time Series"),
-      tags$h5("The following four graphs feature the training data observations, the seasonal 
+      tags$h5("The following four graphs feature the seasonally adjusted data observations, the seasonal 
 component of the data, 
-              the trend component, and the 
-              error. There is a bar 
+              the trend component, and the in-sample
+              residuals. There is a bar 
               at the right hand side of each graph to allow a 
               relative comparison of the magnitudes of each 
               component."),
       plotOutput("otherPlot"),
       tags$hr(),
-      tags$h3("Accuracy forecasting 2015 bike trail usage"),
+      tags$h3("Accuracy forecasting bike trail usage"),
       tags$h5("Here you'll find a range of summary measures for the forecast's accuracy."),
       tableOutput("accuracy")
     )
