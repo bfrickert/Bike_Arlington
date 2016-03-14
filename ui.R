@@ -6,7 +6,7 @@ library(plotly)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("You know you want to Forecast Bike Trail Usage in Arlington, VA!"),
+  titlePanel("Forecast Bike Trail Usage in Arlington, Va."),
   
   # Sidebar with a slider input for the number of bins
   sidebarLayout(
@@ -56,9 +56,7 @@ shinyUI(fluidPage(
            cannot be attributed to seasonal traffic (so far as the model can identify). This
            probably makes the most sense when looking at the <strong>Bluemont Connector</strong> trail.
            The model tells us that there is no bicycle traffic on this trail that cannot be
-          explained by the seasonal and overall trends from the sensor data. And if you're interested in
-           just what the seasonal and overall trends look like, refer to the <i>Forecast Decomposition
-           Visualizations</i>.</h5>"),
+          explained by the seasonal and overall trends detected from the sensor data.</h5>"),
       tags$br(),
       tags$h5("So go ahead and pick your favorite trail!"),
       tags$br(),
@@ -82,16 +80,16 @@ shinyUI(fluidPage(
       tags$h5("If the count of bikes that can be attributed to the seasonal and overall
 trends is removed, you wind up with the line graph below. It displays the monthly bike counts
 that the model can't explain from trends and tries to forecast what future seasonally adjusted
-bike trail usage. This forescast (in blue with gray confidence intervals) can then be 
-compared to actual seasonally adjusted data (in red) to see how well the model does at 
-forecasting. 
+bike trail usage will be. This forescast (in blue with gray confidence intervals) can then be 
+compared to actual seasonally adjusted data (in red) that was left out of the model. It gives a 
+visual sense of how well the model forecasts. 
               "),
       plotOutput("forecastPlot"),
       tags$hr(),
       tags$h3("Decomposition of Training Time Series"),
       tags$h5("The following four graphs feature the seasonally adjusted data observations, the seasonal 
 component of the data, 
-              the trend component, and the in-sample
+              the overal trend component, and the in-sample
               residuals. There is a bar 
               at the right hand side of each graph to allow a 
               relative comparison of the magnitudes of each 
@@ -99,7 +97,11 @@ component of the data,
       plotOutput("otherPlot"),
       tags$hr(),
       tags$h3("Accuracy forecasting bike trail usage"),
-      tags$h5("Here you'll find a range of summary measures for the forecast's accuracy."),
+      HTML("<h5>Here you'll find a range of summary measures for the forecast's accuracy. The 
+              <i>Training Set's</i> accuracy refers to the errors that were detected in creating the 
+           model. Essentially those counts, the model can't explain. The <i>Test Set's</i> accuracy
+           measures how well the forecast performs when cross-validated against data that was left out 
+           of the model and was seasonally adjusted."),
       tableOutput("accuracy")
     )
   )
